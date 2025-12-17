@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { getLanguage, getModule, getUilmFile } from '../services/language.service';
-import { LanguageResponse, ModuleResponse, UilmFileParams } from '../types/language.types';
+import { getLanguage, getModule } from '../services/language.service';
+import { LanguageResponse, ModuleResponse } from '../types/language.types';
 
 /**
  * Custom hook to fetch language data from the UILM file
@@ -22,15 +22,6 @@ import { LanguageResponse, ModuleResponse, UilmFileParams } from '../types/langu
  *   moduleName: 'dashboard'
  * });
  */
-export const useGetUilmFile = (params: UilmFileParams) => {
-  const { language, moduleName } = params;
-
-  return useQuery({
-    queryKey: ['getUilmFile', language, moduleName],
-    queryFn: () => getUilmFile(params),
-  });
-};
-
 /**
  * Custom hook to fetch all available languages from the API
  *

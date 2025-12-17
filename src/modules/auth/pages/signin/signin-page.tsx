@@ -1,16 +1,14 @@
 import { useEffect, useRef } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import darklogo from '@/assets/images/construct_logo_dark.svg';
-import lightlogo from '@/assets/images/construct_logo_light.svg';
-import { useTheme } from '@/styles/theme/theme-provider';
+
+import logo from '@/assets/images/open-events-no-text.svg';
 import { Signin } from '../../components/signin/signin';
 import { useAuthStore } from '@/state/store/auth';
 import { useGetLoginOptions, useSigninMutation } from '../../hooks/use-auth';
 import { SignInResponse } from '../../services/auth.service';
 
 export const SigninPage = () => {
-  const { theme } = useTheme();
   const { t } = useTranslation();
   const { data: loginOption } = useGetLoginOptions();
   const navigate = useNavigate();
@@ -47,10 +45,13 @@ export const SigninPage = () => {
   }, [searchParams, signinMutate, login, setTokens, navigate]);
 
   return (
-    <div className="flex flex-col gap-6">
-      <div className="w-32 h-14 mb-2">
-        <img src={theme == 'dark' ? lightlogo : darklogo} className="w-full h-full" alt="logo" />
+    <div className="flex flex-col gap-4  items-start w-full">
+      <div className="w-full flex items-center justify-center">
+        <div className="w-24 h-24">
+          <img src={logo} className="w-full h-full" alt="logo" />
+        </div>
       </div>
+
       <div>
         <div className="text-2xl font-bold text-high-emphasis">{t('LOG_IN')}</div>
         <div className="flex items-center gap-1 mt-1">

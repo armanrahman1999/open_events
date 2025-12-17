@@ -22,7 +22,7 @@ html.dark {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
-  
+
   .scrollbar-hide::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
   }
@@ -72,16 +72,17 @@ html.dark {
 
   :root {
     --white: 0, 0%, 100%;
-    --primary-50: 183, 41%, 91%;
-    --primary-100: 183, 41%, 78%;
-    --primary-200: 181, 40%, 64%;
-    --primary-300: 181, 40%, 49%;
-    --primary-400: 180, 63%, 38%;
-    --primary-500: 179, 100%, 28%;
-    --primary-600: 179, 98%, 26%;
-    --primary-700: 178, 97%, 23%;
-    --primary-800: 177, 89%, 21%;
-    --primary-900: 175, 80%, 15%;
+    --primary-50: 30, 100%, 95%;
+    --primary-100: 28, 100%, 88%;
+    --primary-200: 27, 100%, 78%;
+    --primary-300: 26, 95%, 66%;
+    --primary-400: 25, 90%, 55%;
+    --primary-500: 24, 95%, 48%;
+    --primary-600: 22, 90%, 42%;
+    --primary-700: 21, 85%, 35%;
+    --primary-800: 20, 80%, 28%;
+    --primary-900: 18, 75%, 20%;
+
     --primary-foreground: 240 10% 3.9%;
 
     --secondary-50: 198, 76%, 93%;
@@ -172,12 +173,12 @@ html.dark {
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary: 24 95% 48%; /* Changed from green to orange */
     --sidebar-primary-foreground: 0 0% 98%;
     --sidebar-accent: 240 4.8% 95.9%;
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-ring: 24 95% 48%; /* Changed from blue to orange */
 
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
@@ -193,7 +194,7 @@ html.dark {
     --destructive-foreground: 0 0% 98%;
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
-    --ring: 142.1 76.2% 36.3%;
+    --ring: 24 95% 48%; /* Changed from green to orange */
     --radius: 0.3rem;
     --emerald-green-500: 157 40% 42%;
 
@@ -229,7 +230,7 @@ html.dark {
     --primary-700: 185, 40%, 63%;
     --primary-800: 185, 40%, 77%;
     --primary-900: 187, 39%, 91%;
-    --primary-foreground: 144.9 80.4% 10%;
+    --primary-foreground: 24 95% 10%; /* Changed from green to orange */
 
     --secondary-50: 201, 63%, 17%;
     --secondary-100: 200, 64%, 22%;
@@ -319,12 +320,12 @@ html.dark {
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary: 24 95% 48%; /* Changed from blue to orange */
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 240 3.7% 15.9%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-ring: 24 95% 48%; /* Changed from blue to orange */
 
     --background: 20 14.3% 4.1%;
     --foreground: 0 0% 95%;
@@ -340,7 +341,7 @@ html.dark {
     --destructive-foreground: 0 85.7% 97.3%;
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
-    --ring: 142.4 71.8% 29.2%;
+    --ring: 24 95% 48%; /* Changed from green to orange */
     /* File type icon colors */
     --folder-icon-color: 34, 94%, 50%;
     --folder-icon-background: 37, 100%, 94%;
