@@ -1,29 +1,15 @@
-/**
- * @fileoverview i18n configuration and utility functions for internationalization.
- * This module sets up i18next with React integration and loads translations from local JSON files.
- *
- * @module i18n
- */
-
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import enTranslations from './locales/en.json';
-import deTranslations from './locales/de.json';
+// import enTranslations from './locales/en.json';
+// import deTranslations from './locales/de.json';
+import { getUILMFile } from '@/components/core/language-selector/services/language.service';
 
-// declare custom type options so the return is always a string.
 declare module 'i18next' {
   interface CustomTypeOptions {
     returnNull: false;
   }
 }
 
-/**
- * Initialize i18next instance with default configuration.
- * - Sets English (US) as the default and fallback language
- * - Disables HTML escaping for interpolation
- * - Ensures null is never returned (always returns string)
- * - Loads translations from local JSON files
- */
 i18n.use(initReactI18next).init({
   lng: 'en-US',
   fallbackLng: 'en-US',
@@ -31,46 +17,20 @@ i18n.use(initReactI18next).init({
     escapeValue: false,
   },
   returnNull: false,
-  resources: {
-    'en-US': {
-      translation: enTranslations,
-    },
-
-    'de-DE': {
-      translation: deTranslations,
-    },
-  },
+  resources: {},
 });
 
-/**
- * No-op function kept for backwards compatibility.
- * Translations are now loaded entirely from local JSON files.
- *
- * @deprecated Use local JSON files instead
- */
-export const loadTranslations = async (): Promise<void> => {
-  return Promise.resolve();
+export const loadTranslations = async (language: string): Promise<any> => {
+  try {
+    const translations = await getUILMFile(language);
+    if (!translations) {
+      return;
+    }
+    i18n.addResourceBundle(language, 'translation', translations, true, true);
+  } catch (error) {
+    console.error(' Failed to fetch translation language');
+  }
 };
-
-/**
- * ---------------------------------------------------------------------------
- * Key Mode Toggle Logic
- * ---------------------------------------------------------------------------
- * The following code enables dynamic toggling between displaying translation
- * **values** (default) and **keys** (key-mode) at runtime. The toggle is driven
- * by messages sent from a browser extension via `window.postMessage`.
- *
- * Expected message format:
- *   { action: 'keymode', keymode: boolean, defaultLang?: string }
- *
- * When `keymode` is `true`, all calls to `i18n.t()` will return the **key**
- * instead of the translated value. This is achieved by monkey-patching the
- * `i18n.t` function while preserving its original behaviour for normal mode.
- *
- * Renders are refreshed by emitting a `languageChanged` event, which the
- * `react-i18next` provider already listens to for triggering re-renders.
- * ---------------------------------------------------------------------------
- */
 
 declare global {
   interface Window {

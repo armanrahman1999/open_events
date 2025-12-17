@@ -10,41 +10,27 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui-kit/dropdown-menu';
 import { useLanguageContext } from '@/i18n/language-context';
-
-/**
- * Hardcoded available languages
- */
-const AVAILABLE_LANGUAGES = [
-  {
-    itemId: '1',
-    languageCode: 'en-US',
-    languageName: 'English',
-    isDefault: true,
-  },
-  {
-    itemId: '2',
-    languageCode: 'de-DE',
-    languageName: 'German',
-    isDefault: false,
-  },
-];
+import { useAvailableLanguages } from './hooks/use-language';
 
 export const LanguageSelector = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { currentLanguage, setLanguage } = useLanguageContext();
+  const { data: AVAILABLE_LANGUAGES = [] } = useAvailableLanguages();
 
   useEffect(() => {
-    const currentLanguageExists = AVAILABLE_LANGUAGES.some(
-      (lang) => lang.languageCode === currentLanguage
-    );
+    if (AVAILABLE_LANGUAGES) {
+      const currentLanguageExists = AVAILABLE_LANGUAGES.some(
+        (lang) => lang.languageCode === currentLanguage
+      );
 
-    if (!currentLanguageExists) {
-      const defaultLanguage = AVAILABLE_LANGUAGES.find((lang) => lang.isDefault);
-      if (defaultLanguage) {
-        setLanguage(defaultLanguage.languageCode);
+      if (!currentLanguageExists) {
+        const defaultLanguage = AVAILABLE_LANGUAGES.find((lang) => lang.isDefault);
+        if (defaultLanguage) {
+          setLanguage(defaultLanguage.languageCode);
+        }
       }
     }
-  }, [currentLanguage, setLanguage]);
+  }, [currentLanguage, setLanguage, AVAILABLE_LANGUAGES]);
 
   const changeLanguage = async (newLanguageCode: string) => {
     await setLanguage(newLanguageCode);
